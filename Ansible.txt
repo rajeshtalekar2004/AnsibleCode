@@ -1,0 +1,64 @@
+00. Ansible
+	- https://eylearning.udemy.com/course/complete-ansible-devops-automation-training/learn/lecture/31915660#overview
+01. What is ansible?
+		- Provision
+		- Configuration
+	- Benefits
+		- Agentless
+		- Open source
+		- Avoid Human Errors
+		- Save time
+		- Increase production
+		- Easy to use
+	- Terminology
+		- Control node
+		- Modules
+			- www.docs.ansible.com
+			- www.galaxy.ansible.com
+		- Playbook
+		- YAML
+			Yet another markup language
+		- Inventory
+		- Tag
+		- Variable
+		- Role
+	- Free resources
+		- https://docs.ansible.com/ansible/latest/modules/index.html
+		
+02. Remote clients
+	- Host file inventory
+	- 
+03. Advance features
+  	- Roles
+		- 
+	- Tags
+		- Reference or aliases to tasks
+		- instead of running entire playbook use tags to target specific tasks that need to run
+		   ansible-playbook httpbytags.yml -t i-httpd
+		   ansible-playbook {playbook name } -t {tags}
+		- To list all tags in a playbook
+			ansible-playbook {playbook name } -t --list-tags
+			ansible-playbook {playbook name } --skip-tags -httpd
+	- Variable
+		- Contain that hold defined values
+		- use variable in inventory
+	- Handler
+		- Handler are executed at the end of playbook
+		- notified should be globally unique name
+		- notified
+		  - Restart apache
+	- Conditions
+		- take action base on condition
+		tasks
+		- name: start
+		  when: ansible_os_family == "ubuntu"
+	- Loops
+		- run set of commands repetatedly
+		tasks:
+		- name: create user
+		  user:
+		   name: "{{ item }}"
+		  loop:
+           - jerry
+		   - kramer
+           - eliane		   
